@@ -14,19 +14,18 @@ jobs:
         config:
           - name: Windows
             os: windows-latest
-            platform: windows
 
           - name: Android32
             os: ubuntu-latest
-            platform: android32
+            target: Android32
 
           - name: Android64
             os: ubuntu-latest
-            platform: android64
+            target: Android64
 
           - name: macOS
             os: macos-latest
-            platform: macos
+            target: macOS
 
     name: ${{ matrix.config.name }}
     runs-on: ${{ matrix.config.os }}
@@ -35,8 +34,8 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Build the mod
-        uses: geode-sdk/build-geode-mod@main
+        uses: geode-sdk/build-geode-mod@v2
         with:
           sdk: nightly
-          build-args: --platform ${{ matrix.config.platform }}
+          target: ${{ matrix.config.target }}
           export-pdb: true
