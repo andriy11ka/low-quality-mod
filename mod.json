@@ -1,0 +1,33 @@
+{
+    "geode": "v5.7.1",
+    "gd": {
+        "win": "2.2081",
+        "android": "2.2081"
+    },
+    "id": "openai.low-quality",
+    "name": "Low Quality",
+    "version": "v5.7.1",
+    "developer": "OpenAI",
+    "description": "Adds quality presets that change screen resolution, FPS, and audio quality on Android and PC.",
+    "tags": [
+        "universal",
+        "performance",
+        "customization",
+        "offline"
+    ],
+    "settings": {
+        "preset": {
+            "type": "string",
+            "name": "Profile",
+            "description": "Choose how aggressively the mod reduces screen resolution, FPS, and audio quality.",
+            "default": "Normal",
+            "one-of": [
+                "Normal",
+                "low",
+                "lower",
+                "trash",
+                "8k 120 FPS"
+            ]
+        }
+    }
+}
