@@ -8,18 +8,19 @@ endif()
 
 project(LowQuality VERSION 1.0.0)
 
-include(FetchContent)
-
-FetchContent_Declare(
-    geode
-    URL https://github.com/geode-sdk/geode/releases/download/v5.7.1/geode-sdk.zip
-)
-FetchContent_MakeAvailable(geode)
-
 file(GLOB SOURCES
     src/*.cpp
 )
 
 add_library(${PROJECT_NAME} SHARED ${SOURCES})
+
+if (NOT DEFINED ENV{GEODE_SDK})
+    message(FATAL_ERROR "Unable to find Geode SDK! Please define GEODE_SDK.")
+else()
+    message(STATUS "Found Geode SDK: $ENV{GEODE_SDK}")
+endif()
+
+add_subdirectory($ENV{GEODE_SDK} ${CMAKE_CURRENT_BINARY_DIR}/geode)
+
 target_link_libraries(${PROJECT_NAME} geode-sdk)
 create_geode_file(${PROJECT_NAME})
