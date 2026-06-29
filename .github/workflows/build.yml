@@ -24,6 +24,10 @@ jobs:
     runs-on: ${{ matrix.config.os }}
 
     steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
       - uses: actions/checkout@v4.1.7
 
       - name: Build the mod
