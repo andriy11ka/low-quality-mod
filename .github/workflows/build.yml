@@ -43,6 +43,7 @@ jobs:
         with:
           name: ${{ matrix.config.name }}-artifacts
           path: |
-            build/
-            dist/
+            build/Release/
+            build/**.geode
+            build/**.pdb
           retention-days: 90
