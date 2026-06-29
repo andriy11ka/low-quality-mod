@@ -45,3 +45,4 @@ jobs:
           path: |
             build/
             dist/
+          retention-days: 90
